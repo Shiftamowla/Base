@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #000f30;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<h1>Job Table</h1>
+
+<table id="customers">
+  <tr>
+    <th>Job Title</th>
+    <th>Number of Opening</th>
+    <th>Category</th>
+    <th>Job Description</th>
+    <th>Skills</th>
+    <th>Image</th>
+    <th>Action</th>
+  </tr>
+  
+  {% for i in data %}
+    
+    
+  <tr >
+    <td>{{i.job_title}}</td>
+    <td>{{i.Number_of_opening}}</td>
+    <td>{{i.Category}}</td>
+    <td>{{i.Job_Description}}</td>
+    <td>{{i.Skills}}</td>
+    <td>
+        <img width="400px" src="/{{i.company_logo}}" alt="">
+    </td>
+    <td>
+        <a href="{% url 'deletejob'  i.id  %}">Delete</a>
+        <a href="{% url 'mainprofile'  i.id  %}">View</a>
+        <a href="{% url 'editjob'  i.id  %}">Edit</a>
+    </td>
+
+
+  </tr>
+  {% endfor %}
+
+</table>
+
+</body>
+</html>
+
+{% endblock body %}

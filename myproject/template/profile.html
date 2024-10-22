@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f4f4; /* Light gray background */
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #ffffff; /* White background for the container */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #000f30; /* Accent color */
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        .profile-info {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-info img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .profile-info h3 {
+            margin: 10px 0;
+            color: #333; /* Dark text */
+        }
+
+        .profile-info p {
+            color: #555; /* Medium gray text */
+            margin: 5px 0;
+        }
+
+        /* Updated job post styling */
+        .recipe-post {
+            border: 1px solid #ddd; /* Light gray border */
+            padding: 20px;
+            margin-bottom: 30px; /* Space between recipe posts */
+            border-radius: 10px; /* Rounded corners */
+            background-color: #fefefe; /* Soft white background for posts */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+            max-width: 700px; /* Adjusted width for a medium size */
+            margin-left: auto; /* Center align */
+            margin-right: auto; /* Center align */
+        }
+
+        .recipe-post:hover {
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+        }
+
+        .recipe-title {
+            color: #000f30; /* Sienna color for recipe titles */
+            font-size: 2em; /* Larger font size for titles */
+            margin: 0;
+            font-family: 'Playfair Display', serif; /* Elegant font for titles */
+            text-align: center;
+            border-bottom: 2px solid #ddd; /* Underline effect with thicker border */
+            padding-bottom: 10px;
+            background-color: #ffebcd; /* Light background color for titles */
+            padding: 10px; /* Padding around the title */
+            border-radius: 5px; /* Slightly round the corners */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+        }
+
+        .logo {
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .logo img {
+            max-height: 300px; /* Adjust as needed */
+            max-width: 100%; /* Responsive image */
+            border-radius: 8px; /* Slightly round the image corners */
+        }
+
+        .details {
+            color: #555; /* Medium gray text */
+            margin: 8px 0;
+            font-size: 1.1em;
+            text-align: center;
+        }
+
+        /* Style for bold labels */
+        .label {
+            font-weight: bold; /* Make label bold */
+            color:  #158302; /* Sienna color for contrast */
+            text-align: left; /* Align labels to the left */
+            margin-bottom: 5px; /* Space between label and text */
+            font-size: 1.1em; /* Slightly larger font size for labels */
+        }
+
+        .description {
+            margin-top: 10px;
+            color: #444; /* Darker gray text */
+            font-size: 1em;
+            text-align: center;
+        }
+
+        .apply-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 20px;
+            background-color: #000f30; /* Dark brown for buttons */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-size: 1em;
+            text-align: center;
+        }
+
+        .apply-button:hover {
+            background-color: #026983; /* Lighter brown on hover */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+
+        <div class="profile-info">
+
+            <h3>ID {{ user.id }}</h3>
+
+            {% for i in edu %}
+            <div class="logo">
+                <img src="/{{ i.Image }}" alt="Company Logo">
+            </div>
+            {% endfor %}
+            {% for i in exp %}
+            <div class="logo">
+                <img src="/{{ i.Image }}" alt="Company Logo">
+            </div>
+            {% endfor %}
+            
+                
+                
+            <p>User name: <strong>{{ user.username }}</strong></p>
+            <p>User Type: <strong>{{ user.user_type }}</strong></p>
+            <p>Email: <strong>{{ user.email }}</strong></p>
+
+
+            
+            {% for i in exp %}
+            <a href="#" class="apply-button">Update Profile</a>
+            <a href="#" class="apply-button">Skill</a>
+            <a href="#" class="apply-button">Applyed Jobs</a>
+            {% endfor %}
+
+            {% for i in edu %}
+            <a href="#" class="apply-button">Update Profile</a>
+            <a href="#" class="apply-button">JobTable</a>
+            {% endfor %}
+
+
+
+
+
+        </div>
+    </div>
+
+</body>
+</html>
+
+{% endblock body %}
